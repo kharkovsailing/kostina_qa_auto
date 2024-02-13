@@ -9,6 +9,8 @@ from selenium.webdriver.support.wait import WebDriverWait
 #from selenium.webdriver.support import expected_conditions as EC
 
 
+items = 'product-item-link'
+
 @pytest.mark.ui_shop
 def test_check_first_element():
     # Створення об'єкту для керування бразуером
@@ -18,7 +20,7 @@ def test_check_first_element():
     driver.get("https://magento.softwaretestingboard.com/women/tops-women/tees-women.html")
 
     # Знаходимо 'product-item-link'
-    search_items = driver.find_elements(By.CLASS_NAME, 'product-item-link')
+    search_items = driver.find_elements(By.CLASS_NAME, items)
 
     # Знаходимо в 'product-item-link' назву першого товару
     first_item = search_items[0]

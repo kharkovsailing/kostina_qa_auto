@@ -12,10 +12,8 @@ def test_database_connection():
 def test_check_all_users():
     db = Database()
     users = db.get_all_users()
-
-    print(users)
     
-
+    
 @pytest.mark.database
 def test_check_user_sergii():
     db = Database()
@@ -59,7 +57,7 @@ def test_product_delete():
 def test_detailed_orders():
     db = Database()
     orders = db.get_detailed_orders()
-    print("Замовлення", orders)
+    
     # Check quantity of orders equal to 1
     assert len(orders) == 1
 
