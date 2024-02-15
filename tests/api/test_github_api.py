@@ -13,6 +13,15 @@ def test_user_not_exists(github_api):
     r = github_api.get_user('butenkosergii')
     assert r['message'] == 'Not Found'
     
+
+# Test with parametres to search 'total count' of repositories
+
+@pytest.mark.parametrize('name, count', [('Sailing-Photo-Gallery', 1), ('sergiibutenko_non_exist', 0)])
+def test_repo_count(github_api, name, count):
+    assert github_api.search_repo(name)['total_count'] == count
+
+
+# The same test without parametres - the next two tests:
     
 @pytest.mark.api
 def test_repo_can_be_found(github_api):
@@ -30,3 +39,4 @@ def test_repo_cannot_be_found(github_api):
 def test_repo_with_single_char_be_found(github_api):
     repo2 = github_api.search_repo('s')
     assert repo2['total_count'] != 0
+
