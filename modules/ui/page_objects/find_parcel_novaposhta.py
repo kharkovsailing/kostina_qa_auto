@@ -18,9 +18,12 @@ class FindPage(BasePage):
         # Вводимо неправильний tracknumber
         search_parcel_elem.send_keys(tracknumber)
 
-        # Знаходимо кнопку Відстежити
-        btn_elem = self.driver.find_element(By.XPATH, "/html/body/div[1]/div[2]/section/div/div/div[1]/div[2]/div[2]")
-
+        # Знаходимо кнопку "Відстежити", можливі варианти: //*[@class="button black"]
+        # Do not use absolute XPATH like this:
+        #btn_elem = self.driver.find_element(By.XPATH, "/html/body/div[1]/div[2]/section/div/div/div[1]/div[2]/div[2]")
+        
+        btn_elem = self.driver.find_element(By.XPATH, '//*[contains(text(), "Відстежити")]')
+        
         # Емулюємо клік лівою кнопкою мишки
         btn_elem.click()
 
