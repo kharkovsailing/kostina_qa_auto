@@ -9,6 +9,8 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
+# This test checks the page sorting function ('price' option)
+# main_link = "https://magento.softwaretestingboard.com/women/tops-women/tees-women.html"
 items = 'product-item-link'
 
 @pytest.mark.ui_shop
@@ -32,7 +34,7 @@ def test_check_first_element():
     
     # Чекаємо поки сторінка перезавантажиться
     # Як вариант: WebDriverWait(driver, 10)
-    WebDriverWait(driver, 10).until(EC.text_to_be_present_in_element((By.TAG_NAME, 'body'), 'Tees'))
+    WebDriverWait(driver, 10).until(EC.text_to_be_present_in_element((By.TAG_NAME, 'body'), 'Click “Write for us” link in the footer to submit a guest post'))
     
     
     # Знаходимо в 'product-item-link' назву першого товару
