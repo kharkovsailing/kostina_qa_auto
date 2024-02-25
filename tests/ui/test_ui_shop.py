@@ -10,7 +10,8 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 # This test checks the page sorting function ('price' option)
-# main_link = "https://magento.softwaretestingboard.com/women/tops-women/tees-women.html"
+# url main_link = "https://magento.softwaretestingboard.com/women/tops-women/tees-women.html"
+url = "https://magento.softwaretestingboard.com/women/tops-women/tees-women.html"
 items = 'product-item-link'
 
 @pytest.mark.ui_shop
@@ -19,7 +20,7 @@ def test_check_first_element():
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
    
     # відкриваємо сторінку https://magento.softwaretestingboard.com/women/tops-women/tees-women.html
-    driver.get("https://magento.softwaretestingboard.com/women/tops-women/tees-women.html")
+    driver.get(url)
 
     # Знаходимо 'product-item-link'
     search_items = driver.find_elements(By.CLASS_NAME, items)
@@ -34,7 +35,7 @@ def test_check_first_element():
     
     # Чекаємо поки сторінка перезавантажиться
     # Як вариант: WebDriverWait(driver, 10)
-    WebDriverWait(driver, 10).until(EC.text_to_be_present_in_element((By.TAG_NAME, 'body'), 'Click “Write for us” link in the footer to submit a guest post'))
+    WebDriverWait(driver, 15).until(EC.text_to_be_present_in_element((By.TAG_NAME, 'body'), 'Click “Write for us” link in the footer to submit a guest post'))
     
     
     # Знаходимо в 'product-item-link' назву першого товару
