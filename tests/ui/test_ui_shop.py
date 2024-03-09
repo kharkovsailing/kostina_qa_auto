@@ -7,7 +7,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
+import datetime
 
 # This test checks the page sorting function ('price' option)
 # url main_link = "https://magento.softwaretestingboard.com/women/tops-women/tees-women.html"
@@ -25,6 +25,11 @@ def test_check_first_element():
     # Знаходимо 'product-item-link'
     search_items = driver.find_elements(By.CLASS_NAME, items)
 
+    # screenshot of the current page
+    # now_date = datetime.datetime.utcnow().strftime("%Y.%m.%d.%H.%m.%s")
+    # name_screenshot = 'screenshot_' + now_date + '.png'
+    # driver.save_screenshot(name_screenshot)
+    
     # Знаходимо в 'product-item-link' назву першого товару
     first_item = search_items[0]
 
@@ -42,6 +47,8 @@ def test_check_first_element():
     search_items = driver.find_elements(By.CLASS_NAME, items)
     new_first_item = search_items[0]
     
+    # screenshot of the current page
+    #driver.save_screenshot(name_screenshot)
     
     assert new_first_item != first_item
 
